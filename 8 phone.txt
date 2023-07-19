@@ -1,0 +1,316 @@
+manifest
+
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PRIVILEGED"></uses-permission>
+
+main xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/ed1"
+        android:layout_width="match_parent"
+        android:layout_height="750dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <Button
+                android:id="@+id/call"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="CALL"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="30pt"
+            android:layout_height="30pt"
+            android:layout_weight="1"
+            android:background="#FF6200EE"
+            android:text="SAVE"
+            android:textColor="#FFFFFFFF"
+            android:textSize="30dp" ></Button>
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <Button
+                android:id="@+id/b7"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="7"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+            <Button
+                android:id="@+id/b8"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="8"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+            <Button
+                android:id="@+id/b9"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="9"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <Button
+                android:id="@+id/b4"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="4"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+            <Button
+                android:id="@+id/b5"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="5"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+            <Button
+                android:id="@+id/b6"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="6"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="1"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+            <Button
+                android:id="@+id/b2"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="2"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+            <Button
+                android:id="@+id/b3"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="3"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <Button
+                android:id="@+id/b0"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="0"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+            <Button
+                android:id="@+id/del"
+                android:layout_width="30pt"
+                android:layout_height="30pt"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="DELET"
+                android:textColor="#FFFFFFFF"
+                android:textSize="30dp" ></Button>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
+
+
+
+main java
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.PackageManagerCompat;
+
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+    Button bt0,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,btsave,btcal,btdel;
+    EditText editText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        bt0=(Button) findViewById(R.id.b0);
+        bt1=(Button) findViewById(R.id.b1);
+        bt2=(Button) findViewById(R.id.b2);
+        bt3=(Button) findViewById(R.id.b3);
+        bt4=(Button) findViewById(R.id.b4);
+        bt5=(Button) findViewById(R.id.b5);
+        bt6=(Button) findViewById(R.id.b6);
+        bt7=(Button) findViewById(R.id.b7);
+        bt8=(Button) findViewById(R.id.b8);
+        bt9=(Button) findViewById(R.id.b9);
+        btcal=(Button) findViewById(R.id.call);
+        btsave=(Button) findViewById(R.id.save);
+        btdel=(Button) findViewById(R.id.del);
+        editText=(EditText) findViewById(R.id.ed1);
+        bt0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"0");
+            }
+        });
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"1");
+            }
+        });
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"2");
+            }
+        });
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"3");
+            }
+        });
+        bt4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"4");
+            }
+        });
+        bt5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"5");
+            }
+        });
+        bt6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"6");
+            }
+        });
+        bt7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"7");
+            }
+        });
+        bt8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"8");
+            }
+        });
+        bt9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText()+"9");
+            }
+        });
+        btdel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String a=editText.getText().toString();
+                if(a.length()>0)
+                {
+                    String b=a.substring(0,a.length()-1);
+                    editText.setText(b);
+                }
+            }
+        });
+        btsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(ContactsContract.Intents.Insert.ACTION);
+                i.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+                i.putExtra(ContactsContract.Intents.Insert.PHONE, editText.getText());
+                startActivity(i);
+            }
+        });
+        btcal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int REQUEST_PHONE_CALL = 1;
+                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+                    if(ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+                    }
+                    else{
+                        String number = editText.getText().toString();
+                        Intent callIntent = new Intent(Intent.ACTION_CALL);
+                        callIntent.setData(Uri.parse("tel:" + number));
+                        startActivity(callIntent);
+                    }
+                }
+            }
+        });
+    }
+}

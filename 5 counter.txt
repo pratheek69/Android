@@ -1,0 +1,146 @@
+JAVA
+
+
+package com.example.a5counterapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Chronometer;
+
+public class MainActivity extends AppCompatActivity {
+    Button start,stop,reset;
+    Chronometer mychronometer;
+    long lastpause;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mychronometer=(Chronometer)findViewById((R.id.Chrono));
+        start=(Button)findViewById((R.id.btnstart));
+        stop=(Button)findViewById((R.id.btnstop));
+        reset=(Button)findViewById((R.id.btnreset));
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(lastpause!=0)
+                {
+                    mychronometer.setBase(mychronometer.getBase()+ SystemClock.elapsedRealtime()-lastpause);
+                }
+                else
+                {
+                    mychronometer.setBase(SystemClock.elapsedRealtime());
+                }
+                mychronometer.start();
+                start.setEnabled(false);
+                stop.setEnabled(true);
+
+            }
+
+
+        });
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lastpause=SystemClock.elapsedRealtime();
+                mychronometer.stop();
+                stop.setEnabled(false);
+                start.setEnabled(true);
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mychronometer.setBase(SystemClock.elapsedRealtime());
+            }
+        });
+
+    }
+
+}
+
+
+
+
+
+
+XML
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnstart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="88dp"
+        android:text="START"
+        app:cornerRadius="20sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Chrono"
+        />
+
+    <Button
+        android:id="@+id/btnstop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="STOP"
+        app:cornerRadius="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.703"
+        app:layout_constraintStart_toEndOf="@+id/btnstart"
+        app:layout_constraintTop_toBottomOf="@+id/Chrono" />
+
+    <Button
+        android:id="@+id/btnreset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="RESET"
+        app:cornerRadius="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnstop" />
+
+    <Chronometer
+        android:id="@+id/Chrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:textColor="#FF000000"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t1" />
+
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="COUNTER APPLICATION"
+        android:textColor="#FFBB86FC"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>
